@@ -1,0 +1,15 @@
+python -m visdom.server -logging_level WARNING
+python train.py --data_type PTC_MR --num_epochs 200
+
+bash
+ps aux | grep visdom
+kill [PID]
+
+classtification :
+cd pytorch
+python main_cls.py --exp_name=dgccaps --model=dgccaps --num_points=1024 --k=20 --use_sgd=True
+
+part seg:
+cd pytorch
+python main_partseg.py --exp_name=dgccaps --model=dgccaps --num_points=1024 --k=20 --use_sgd=True
+
